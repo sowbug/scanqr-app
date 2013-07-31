@@ -1,0 +1,14 @@
+#!/bin/bash
+
+TMP_FOLDER=/tmp/scanqr-temp
+
+rm -rf $TMP_FOLDER
+mkdir -p $TMP_FOLDER
+cp *.js *.png *.css *.html *.js *.json $TMP_FOLDER
+cp -R jsqrcode $TMP_FOLDER
+cp -R audio $TMP_FOLDER
+
+rm -f ~/scanqr-cws.zip
+pushd $TMP_FOLDER
+zip ~/scanqr-cws.zip -r .
+popd
