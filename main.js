@@ -58,7 +58,7 @@ onload = function() {
       var mid = vidSize >> 1;
       var capHalf = capSize >> 1;
       ctx.drawImage(video,
-        mid - capHalf, mid - capHalf, capSize, capSize,
+        mid, mid - capHalf, capSize, capSize,
         0, 0, capSize, capSize);
       try {
         qrcode.decode();

@@ -11,6 +11,7 @@ video {
   left: 0;
   position: absolute;
   top: 0;
+  -webkit-transform: rotateY(180deg);
   z-index: 1;
 }
 
@@ -23,9 +24,9 @@ svg {
 
 canvas {
   height: 480px;
-  left: 0px;
+  left: 0;
   position: absolute;
-  top: 0px;
+  top: 0;
   width: 480px;
   z-index: 998;
 }
