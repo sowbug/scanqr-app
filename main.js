@@ -59,7 +59,7 @@ onload = function() {
       var mid = vidSize >> 1;
       var capHalf = capSize >> 1;
       ctx.drawImage(video,
-        mid, mid - capHalf, capSize, capSize,
+        mid + 32, mid - capHalf, capSize, capSize,
         0, 0, capSize, capSize);
       try {
         qrcode.decode();
@@ -73,6 +73,11 @@ onload = function() {
   document.querySelector("#again").onclick = function() {
     start();
     scanSnapshot();
+  };
+
+  document.querySelector("#copy").onclick = function() {
+    document.querySelector("#text").select();
+    document.execCommand('copy', null, "");
   };
 
   navigator.webkitGetUserMedia({video: true}, function(stream) {

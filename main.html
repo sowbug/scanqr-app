@@ -23,14 +23,17 @@
 </head>
 <body>
   <div id="info" class="show-on-success">
-    <textarea id="text" class="show-on-success"></textarea>
-    <button id="again" class="show-on-success">Scan Again</button>
+    <textarea id="text"></textarea>
+    <span id="info-controls">
+    <button id="copy">Copy to Clipboard</button>
+    <button id="again">Scan Again</button>
+    </span>
   </div>
   <video autoplay class="show-on-scan"></video>
   <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
     width="480px" height="480px">
     <polyline id="line" points="120,120 360,120 360,360 120,360 120, 120"
-        style="fill:none;stroke:red;stroke-width:1" />
+        style="fill:none;stroke:red;stroke-width:3" />
   </svg>
   <canvas id="qr-canvas" class="show-on-success"></canvas>
 </body>

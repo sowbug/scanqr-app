@@ -1,7 +1,7 @@
 {
   "name": "ScanQR",
   "description": "Scans QR codes using your webcam.",
-  "version": "0.0.0.4",
+  "version": "0.0.0.5",
   "app": {
     "background": {
       "scripts": ["background.js"]
