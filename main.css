@@ -40,7 +40,7 @@ canvas {
 }
 
 #text {
-  background-color: rgba(0, 32, 0, 0.5);
+  background-color: rgba(0, 32, 0, 0.8);
   border: 2px solid yellow;
   color: yellow;
   height: 3em;
@@ -48,7 +48,7 @@ canvas {
 }
 
 button {
-  background-color: rgba(0, 32, 0, 0.5);
+  background-color: rgba(0, 32, 0, 0.8);
   color: yellow;
 }
 
