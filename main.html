@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="jsqrcode/grid.js"></script>
+  <script type="text/javascript" src="jsqrcode/version.js"></script>
+  <script type="text/javascript" src="jsqrcode/detector.js"></script>
+  <script type="text/javascript" src="jsqrcode/formatinf.js"></script>
+  <script type="text/javascript" src="jsqrcode/errorlevel.js"></script>
+  <script type="text/javascript" src="jsqrcode/bitmat.js"></script>
+  <script type="text/javascript" src="jsqrcode/datablock.js"></script>
+  <script type="text/javascript" src="jsqrcode/bmparser.js"></script>
+  <script type="text/javascript" src="jsqrcode/datamask.js"></script>
+  <script type="text/javascript" src="jsqrcode/rsdecoder.js"></script>
+  <script type="text/javascript" src="jsqrcode/gf256poly.js"></script>
+  <script type="text/javascript" src="jsqrcode/gf256.js"></script>
+  <script type="text/javascript" src="jsqrcode/decoder.js"></script>
+  <script type="text/javascript" src="jsqrcode/qrcode.js"></script>
+  <script type="text/javascript" src="jsqrcode/findpat.js"></script>
+  <script type="text/javascript" src="jsqrcode/alignpat.js"></script>
+  <script type="text/javascript" src="jsqrcode/databr.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+  <div id="info" class="show-on-success">
+    <textarea id="text" class="show-on-success"></textarea>
+    <button id="again" class="show-on-success">Scan Again</button>
+  </div>
+  <video autoplay class="show-on-scan"></video>
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+    width="480px" height="480px">
+    <polyline id="line" points="120,120 360,120 360,360 120,360 120, 120"
+        style="fill:none;stroke:red;stroke-width:1" />
+  </svg>
+  <canvas id="qr-canvas" class="show-on-success"></canvas>
+</body>
+</html>

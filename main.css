@@ -1,0 +1,57 @@
+body, textarea, button {
+  font-family: "cousine", Courier New", "Mono";
+  font-size: 10pt;
+}
+
+body {
+  background-color: black;
+}
+
+video {
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+svg {
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+
+canvas {
+  height: 480px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 480px;
+  z-index: 998;
+}
+
+#info {
+  margin: auto;
+  position: absolute;
+  top: 220px;
+  width: 95%;
+  z-index: 999;  
+}
+
+#text {
+  background-color: rgba(0, 128, 16, 0.3);
+  border: 1px solid yellow;
+  color: yellow;
+  height: 3em;
+  margin: auto;
+  width: 90%;
+}
+
+#again {
+  background-color: rgba(0, 64, 16, 0.3);
+  color: yellow;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5em;
+  z-index: 999;
+}

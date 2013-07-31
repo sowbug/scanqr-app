@@ -1,0 +1,14 @@
+{
+  "name": "ScanQR",
+  "description": "Scans QR codes using your webcam.",
+  "version": "0.0.0.1",
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "icons": { "128": "icon128.png" },
+  "permissions": [
+    "videoCapture"
+  ]
+}
