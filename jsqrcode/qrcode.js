@@ -1,6 +1,6 @@
 /*
    Copyright 2011 Lazar Laszlo (lazarsoft@gmail.com, www.lazarsoft.info)
-
+   
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
@@ -27,7 +27,7 @@ qrcode.sizeOfDataLengthInfo =  [  [ 10, 9, 8, 8 ],  [ 12, 11, 16, 10 ],  [ 14, 1
 qrcode.callback = null;
 
 qrcode.decode = function(src){
-
+	
 	if(arguments.length==0)
 	{
 		var canvas_qr = document.getElementById("qr-canvas");
@@ -67,7 +67,7 @@ qrcode.decode = function(src){
 					qrcode.callback(qrcode.result);
 				return;
 			}
-
+			
             try
             {
                 qrcode.result = qrcode.process(context);
@@ -90,12 +90,12 @@ qrcode.decode_utf8 = function ( s )
 }
 
 qrcode.process = function(ctx){
-
+	
 	var start = new Date().getTime();
 
 	var image = qrcode.grayScaleToBitmap(qrcode.grayscale());
     //var image = qrcode.binarize(128);
-
+	
     if(qrcode.debug)
     {
         for (var y = 0; y < qrcode.height; y++)
@@ -110,13 +110,13 @@ qrcode.process = function(ctx){
         }
         ctx.putImageData(qrcode.imagedata, 0, 0);
     }
-
+	
 	//var finderPatternInfo = new FinderPatternFinder().findFinderPattern(image);
-
+	
 	var detector = new Detector(image);
 
 	var qRCodeMatrix = detector.detect();
-
+	
 	/*for (var y = 0; y < qRCodeMatrix.bits.Height; y++)
 	{
 		for (var x = 0; x < qRCodeMatrix.bits.Width; x++)
@@ -129,7 +129,7 @@ qrcode.process = function(ctx){
 	}*/
     if(qrcode.debug)
         ctx.putImageData(qrcode.imagedata, 0, 0);
-
+	
 	var reader = Decoder.decode(qRCodeMatrix.bits);
 	var data = reader.DataByte;
 	var str="";
@@ -138,11 +138,11 @@ qrcode.process = function(ctx){
 		for(var j=0;j<data[i].length;j++)
 			str+=String.fromCharCode(data[i][j]);
 	}
-
+	
 	var end = new Date().getTime();
 	var time = end - start;
 	console.log(time);
-
+    
 	return qrcode.decode_utf8(str);
 	//alert("Time:" + time + " Code: "+str);
 }
@@ -166,7 +166,7 @@ qrcode.binarize = function(th){
 		for (var x = 0; x < qrcode.width; x++)
 		{
 			var gray = qrcode.getPixel(x, y);
-
+			
 			ret[x+y*qrcode.width] = gray<=th?true:false;
 		}
 	}
@@ -222,7 +222,7 @@ qrcode.getMiddleBrightnessPerArea=function(image)
 		//Console.out.println("");
 	}
 	//Console.out.println("");
-
+	
 	return middle;
 }
 
@@ -233,7 +233,7 @@ qrcode.grayScaleToBitmap=function(grayScale)
 	var areaWidth = Math.floor(qrcode.width / sqrtNumArea);
 	var areaHeight = Math.floor(qrcode.height / sqrtNumArea);
 	var bitmap = new Array(qrcode.height*qrcode.width);
-
+	
 	for (var ay = 0; ay < sqrtNumArea; ay++)
 	{
 		for (var ax = 0; ax < sqrtNumArea; ax++)
@@ -257,7 +257,7 @@ qrcode.grayscale = function(){
 		for (var x = 0; x < qrcode.width; x++)
 		{
 			var gray = qrcode.getPixel(x, y);
-
+			
 			ret[x+y*qrcode.width] = gray;
 		}
 	}
