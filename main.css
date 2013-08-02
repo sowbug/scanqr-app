@@ -23,6 +23,16 @@ svg {
   z-index: 2;
 }
 
+#scanlog {
+  color: chartreuse;
+  font-size: 8pt;
+  left: 0;
+  position: absolute;
+  bottom: 0;
+  width: 98%;
+  z-index: 3;
+}
+
 canvas {
   height: 480px;
   left: 0;

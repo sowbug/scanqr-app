@@ -4,6 +4,19 @@ var playSound = function() {
   sound.play();
 };
 
+// http://www.i-programmer.info/programming/graphics-and-imaging/3254-svg-javascript-and-the-dom.html
+var rect = function(w, h, border_color, border_width) {
+ var NS = "http://www.w3.org/2000/svg";
+ var SVGObj = document.createElementNS(NS, "rect");
+ SVGObj.width.baseVal.value = w;
+ SVGObj.height.baseVal.value = h;
+ SVGObj.setAttribute("height", h);
+ SVGObj.style.fill = "none";
+ SVGObj.style.stroke = border_color;
+ SVGObj.style.strokeWidth = border_width;
+ return SVGObj;
+}
+
 var showElements = function(is_scan) {
   var elements = document.querySelectorAll(".show-on-success");
   for (var e = 0; e < elements.length; ++e) {
@@ -40,8 +53,26 @@ onload = function() {
   var vidSize = 480;
   var video = document.querySelector('video');
   var canvas = document.querySelector('canvas');
+  var scanLog = document.querySelector("#scanlog");
   var ctx = canvas.getContext('2d');
   var localMediaStream = null;
+  var viewfinderPulse = 0.5;
+  var viewfinderPulseDelta = 0.1;
+  var viewfinderRect = rect(capSize, capSize, "red", 3);
+  viewfinderRect.x.baseVal.value = (vidSize - capSize) / 2;
+  viewfinderRect.y.baseVal.value = (vidSize - capSize) / 2;
+
+  var svg = document.querySelector("#svg");
+  svg.width = vidSize;
+  svg.height = vidSize;
+  svg.appendChild(viewfinderRect);
+  setInterval(function() {
+    viewfinderPulse += viewfinderPulseDelta;
+    if (viewfinderPulse >= 1.0 || viewfinderPulse <= 0.3) {
+      viewfinderPulseDelta = -viewfinderPulseDelta;
+    }
+    viewfinderRect.style.strokeOpacity = viewfinderPulse;
+  }, 100);
 
   start();
 
@@ -54,6 +85,14 @@ onload = function() {
 
   qrcode.callback = finish;
 
+  var watchdogId = null;
+  function resetLogWatchdog() {
+    if (watchdogId)
+      clearTimeout(watchdogId);
+    watchdogId = setTimeout(function() {
+      scanLog.innerText = "ScanQR"; }, 5000);
+  }
+
   function scanSnapshot() {
     if (localMediaStream) {
       var mid = vidSize >> 1;
@@ -64,7 +103,10 @@ onload = function() {
       try {
         qrcode.decode();
       } catch (e) {
-        console.log(e);
+        if (e != "Couldn't find enough finder patterns") {
+          scanLog.innerText = e;
+          resetLogWatchdog();
+        }
         setTimeout(scanSnapshot.bind(this), 250);
       }
     }
