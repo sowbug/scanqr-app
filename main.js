@@ -99,13 +99,31 @@ onload = function() {
       scanLog.innerText = "ScanQR"; }, 5000);
   }
 
+  var areOffsetsUpdated = false;
+  var clipX, clipY;
+  function maybeUpdateOffsets() {
+    if (areOffsetsUpdated)
+      return;
+
+    if (video.videoWidth > 0) {
+      areOffsetsUpdated = true;
+      var videoOffsetX = (video.videoWidth - vidSize) >> 1;
+      var videoOffsetY = (video.videoHeight - vidSize) >> 1;
+      video.style.webkitTransform = "rotateY(180deg)"
+        + " translateX(" + videoOffsetX + "px)"
+        + " translateY(" + videoOffsetY + "px)";
+      clipX = (video.videoWidth >> 1) - (capSize >> 1);
+      clipY = (video.videoHeight >> 1) - (capSize >> 1);
+    }
+  }
+
   function scanSnapshot() {
     if (localMediaStream) {
-      var mid = vidSize >> 1;
-      var capHalf = capSize >> 1;
-      ctx.drawImage(video,
-        mid + 32, mid - capHalf, capSize, capSize,
-        0, 0, capSize, capSize);
+      maybeUpdateOffsets();
+      if (areOffsetsUpdated) {
+        ctx.drawImage(video, clipX, clipY, capSize, capSize,
+          0, 0, capSize, capSize);
+      }
       try {
         qrcode.decode();
       } catch (e) {
