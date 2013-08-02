@@ -43,6 +43,12 @@ var start = function() {
 };
 
 var finish = function(result) {
+  var openUrlButton = document.querySelector("#open-url");
+  if (/https?:\/\/.*/.test(result))
+    openUrlButton.style.display = 'inline-block';
+  else
+    openUrlButton.style.display = 'none';
+
   document.querySelector("#text").innerText = result;
   showElements(false);
   playSound(false);
@@ -112,14 +118,18 @@ onload = function() {
     }
   }
 
-  document.querySelector("#again").onclick = function() {
-    start();
-    scanSnapshot();
-  };
-
   document.querySelector("#copy").onclick = function() {
     document.querySelector("#text").select();
     document.execCommand('copy', null, "");
+  };
+
+  document.querySelector("#open-url").onclick = function() {
+    window.open(document.querySelector("#text").value);
+  };
+
+  document.querySelector("#scan").onclick = function() {
+    start();
+    scanSnapshot();
   };
 
   navigator.webkitGetUserMedia({video: true}, function(stream) {
