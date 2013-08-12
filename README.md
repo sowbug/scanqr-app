@@ -1,7 +1,7 @@
 scanqr
 ======
 
-A Chrome Packaged App that scans QR codes.
+A Chrome Packaged App that scans QR codes. [Available now in Chrome Web Store!](https://chrome.google.com/webstore/detail/scanqr/nihhbejdflkeingkkpakffdlmepaeaah)
 
 NOTE: Seems to work well only on notebook/Chromebook computers, which
 have webcams that have very short-range focus by default.
