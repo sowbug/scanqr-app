@@ -6,15 +6,15 @@ var playSound = function() {
 
 // http://www.i-programmer.info/programming/graphics-and-imaging/3254-svg-javascript-and-the-dom.html
 var rect = function(w, h, border_color, border_width) {
- var NS = "http://www.w3.org/2000/svg";
- var SVGObj = document.createElementNS(NS, "rect");
- SVGObj.width.baseVal.value = w;
- SVGObj.height.baseVal.value = h;
- SVGObj.setAttribute("height", h);
- SVGObj.style.fill = "none";
- SVGObj.style.stroke = border_color;
- SVGObj.style.strokeWidth = border_width;
- return SVGObj;
+  var NS = "http://www.w3.org/2000/svg";
+  var SVGObj = document.createElementNS(NS, "rect");
+  SVGObj.width.baseVal.value = w;
+  SVGObj.height.baseVal.value = h;
+  SVGObj.setAttribute("height", h);
+  SVGObj.style.fill = "none";
+  SVGObj.style.stroke = border_color;
+  SVGObj.style.strokeWidth = border_width;
+  return SVGObj;
 }
 
 var showElements = function(is_scan) {
@@ -24,7 +24,7 @@ var showElements = function(is_scan) {
     if (is_scan) {
       el.style.display = 'none';
     } else {
-      el.style.display = 'block';      
+      el.style.display = 'block';
     }
   }
   elements = document.querySelectorAll(".show-on-scan");
@@ -33,7 +33,7 @@ var showElements = function(is_scan) {
     if (is_scan) {
       el.style.display = 'block';
     } else {
-      el.style.display = 'none';      
+      el.style.display = 'none';
     }
   }
 };
@@ -122,7 +122,7 @@ onload = function() {
       maybeUpdateOffsets();
       if (areOffsetsUpdated) {
         ctx.drawImage(video, clipX, clipY, capSize, capSize,
-          0, 0, capSize, capSize);
+                      0, 0, capSize, capSize);
       }
       try {
         qrcode.decode();
