@@ -151,7 +151,12 @@ onload = function() {
   };
 
   navigator.webkitGetUserMedia({video: true}, function(stream) {
-    video.src = window.URL.createObjectURL(stream);
+    try {
+      // Thanks https://github.com/killebrewj for the fix!
+      video.srcObject = stream;
+    } catch (e) {
+      video.src = window.URL.createObjectURL(stream);
+    }
     localMediaStream = stream;
     scanSnapshot();
   }, onFailSoHard);

@@ -17,9 +17,11 @@ video {
 }
 
 svg {
+  height: 480px;
   left: 0;
   position: absolute;
   top: 0;
+  width: 480px;
   z-index: 2;
 }
 
@@ -46,7 +48,7 @@ canvas {
   position: absolute;
   top: 40%;
   width: 98%;
-  z-index: 999;  
+  z-index: 999;
 }
 
 #text {
